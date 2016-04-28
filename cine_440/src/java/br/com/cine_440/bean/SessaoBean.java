@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cine440.bean;
+package br.com.cine_440cine_440.bean;
 
 /**
  *
  * @author Leonan
  */
-public class CadastroBean {
+public class SessaoBean {
     
 }
