@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cine440.dao;
+package br.com.cine_440.dao;
 
 /**
  *
  * @author Leonan
  */
-public class CadastroDAO {
+public class CadastroDao {
     
 }
