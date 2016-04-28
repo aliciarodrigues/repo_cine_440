@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.com.cine_440cine_440.bean;
-
-/**
- *
- * @author Leonan
- */
+package br.com.cine_440.bean;
 public class CadastroBean {
     
 }
