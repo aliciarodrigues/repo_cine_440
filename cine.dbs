@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="cine_440" id="Project_1fa5b8" html="y" template="Default" database="MySql" >
+	<schema name="cine_440" schemaname="cine_440" >
+		<table name="cadastro" >
+			<column name="id" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="nome" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="email" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="senha" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="endereco" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="cpf" type="varchar" length="250" jt="12" mandatory="y" />
+			<index name="pk_cadastro" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+		<table name="sessoes" >
+			<column name="id_filmes" type="int" jt="4" mandatory="y" autoincrement="y" />
+			<column name="filmes" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="hora" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="precos" type="double" jt="8" mandatory="y" />
+			<index name="pk_sessoes" unique="PRIMARY_KEY" >
+				<column name="id_filmes" />
+			</index>
+			<storage><![CDATA[engine=InnoDB]]></storage>
+		</table>
+	</schema>
+	<layout id="Layout_1fa5b8" name="cine_440" show_relation_columns="y" >
+		<entity schema="cine_440" name="sessoes" color="b2cdf7" x="45" y="45" />
+		<entity schema="cine_440" name="cadastro" color="b2cdf7" x="285" y="45" />
+	</layout>
+</project>
