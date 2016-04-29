@@ -13,7 +13,7 @@
         <h:form id="frmSessao">
             <p:dataTable var="item" value="#{MBSessao.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
                 <f:facet name="header">
-                    Produto - Listagem
+                    Sessão - Listagem
                 </f:facet>
                 <p:column headerText="ID:" sortBy="#{item.id_sessao}" filterBy="#{item.id_sessao}">
                     <h:outputText value="#{item.id_sessao}"/>
