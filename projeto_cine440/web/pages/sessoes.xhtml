@@ -11,7 +11,7 @@
     </ui:define>
     <ui:define name="conteudo">
         <h:form id="frmSessao">
-            <p:dataTable var="item" value="#{MBSessao.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
+            <p:dataTable var="item" value="#{MBsessao.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
                 <f:facet name="header">
                     Sessão - Listagem
                 </f:facet>
@@ -58,7 +58,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Gravar" 
-                                     actionListener="#{MBsessao.novoSessao()}" 
+                                     actionListener="#{MBsessao.novaSessao()}" 
                                      oncomplete="PF('dlgSeNovo').hide();" 
                                      update=":frmSessao:tbSessao
                                      :msgGlobal"/>
@@ -98,7 +98,7 @@
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Editar" 
-                                     actionListener="#{Msessao.editarSessao()}" 
+                                     actionListener="#{MBsessao.editarSessao()}" 
                                      oncomplete="PF('dlgSeEditar').hide();" 
                                      update=":frmSessao:tbSessao
                                      :msgGlobal"/>
