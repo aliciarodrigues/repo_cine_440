@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ManagedBean(name = "MBCadastro")
+@ManagedBean(name = "MBcadastro")
 @ViewScoped
 public class CadastroBean {
     

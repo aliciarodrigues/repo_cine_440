@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException{
-    String url ="jdbc:mysql://localhost/cine_440";
+    String url ="jdbc:mysql://localhost/projeto_cine440";
         String uid = "root";
-        String pass = "Senac/321";
+        String pass = "0890";
         String driver = "com.mysql.jdbc.Driver";
         
         try {
