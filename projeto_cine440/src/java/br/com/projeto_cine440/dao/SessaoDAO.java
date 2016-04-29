@@ -107,7 +107,7 @@ public class SessaoDAO {
             s.setId_sessao(rs.getInt("id_sessao"));
             s.setFilmes(rs.getString("filmes"));
             s.setPreco(rs.getDouble("preco"));
-            s.setHorario(rs.getTime("Horario"));
+            s.setHorario(rs.getTime("horario"));
             lista.add(s);
 
         }
