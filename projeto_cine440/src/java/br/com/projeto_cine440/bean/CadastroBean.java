@@ -6,7 +6,11 @@ import br.com.projeto_cine440.util.JSFUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
+@ManagedBean(name = "MBCadastro")
+@ViewScoped
 public class CadastroBean {
     
     private Cadastro cadastro;
