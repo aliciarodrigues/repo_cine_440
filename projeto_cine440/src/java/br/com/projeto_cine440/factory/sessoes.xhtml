@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="/templates/modelo_template.xhtml">
+
+    <ui:define name="menu">
+        <ui:include src="/includes/menu_princi.xhtml"/>
+    </ui:define>
+    <ui:define name="conteudo">
+        <h:form id="frmSessao">
+            <p:dataTable var="item" value="#{MBSessao.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
+                <f:facet name="header">
+                    Produto - Listagem
+                </f:facet>
+                <p:column headerText="ID:" sortBy="#{item.id_sessao}" filterBy="#{item.id_sessao}">
+                    <h:outputText value="#{item.id_sessao}"/>
+                </p:column>
+                <p:column headerText="Filmes:" sortBy="#{item.filmes}" filterBy="#{item.filmes}">
+                    <h:outputText value="#{item.filmes}"/>
+                </p:column>
+                <p:column headerText="Preço:" sortBy="#{item.preco}" filterBy="#{item.preco}">
+                    <h:outputText value="#{item.preco}"/>
+                </p:column>
+                <p:column headerText="Horário:" sortBy="#{item.horario}" filterBy="#{item.horario}">
+                    <h:outputText value="#{item.horario}"/>
+                </p:column>
+                <p:column headerText="Opções">
+                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgSeExcluir').show();" update=":frmExcluiSessao:pnlExcluiSessao
+                                     :msgGlobal">
+                        <f:setPropertyActionListener target="#{MBsessao.sessao}" value="#{item}"/>
+                    </p:commandButton>
+                    
+                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgSeEditar').show();" update=":frmEditarSessao:pnlEditarSessao
+                                     :msgGlobal">
+                        <f:setPropertyActionListener target="#{MBsessao.sessao}" value="#{item}"/>
+                    </p:commandButton>
+                    </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Novo" 
+                                     actionListener="#{MBsessao.prepararSessao()}" 
+                                     oncomplete="PF('dlgSeNovo').show();" 
+                                     update=":frmCadastraSessao:pnlCadastraSessao
+                                     :msgGlobal"/>
+                </f:facet>
+            </p:dataTable>
+        </h:form>
+
+        <p:dialog widgetVar="dlgSeNovo" closable="false" draggable="false" resizable="false" header="Novo Produto" modal="true" appendTo="@(body)">
+            <h:form id="frmCadastraSessao">
+                <h:panelGrid columns="2" id="pnlCadastraSessao">
+                    <p:outputLabel value="Filme:"/>
+                    <p:inputText size="30" maxlength="50" value="#{MBsessao.sessao.filmes}"/>
+                    <p:outputLabel value="Preços:"/>
+                    <p:inputText size="15" maxlength="50" value="#{MBsessao.sessao.preco}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <p:commandButton value="Gravar" 
+                                     actionListener="#{MBsessao.novoSessao()}" 
+                                     oncomplete="PF('dlgSeNovo').hide();" 
+                                     update=":frmSessao:tbSessao
+                                     :msgGlobal"/>
+                    <p:commandButton value="Cancelar" onclick="PF('dlgSeNovo').hide();"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+        <p:dialog widgetVar="dlgSeExcluir" closable="false" draggable="false" resizable="false" header="Excluir Produto" modal="true" appendTo="@(body)">
+            <h:form id="frmExcluiProduto">
+                <h:panelGrid columns="2" id="pnlExcluiSessao">
+                    <h:outputLabel value="ID: "/>
+                    <h:outputText value="#{MBsessao.sessao.id_sessao}"/>
+                    <h:outputLabel value="Filme: "/>
+                    <h:outputText value="#{MBsessao.sessao.filmes}"/>
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <p:commandButton value="Excluir" 
+                                     actionListener="#{MBsessao.excluirSessao()}" 
+                                     oncomplete="PF('dlgSeExcluir').hide();" 
+                                     update=":frmSessao:tbSessao
+                                     :msgGlobal"/>
+                    <p:commandButton value="Cancelar" onclick="PF('dlgSeExcluir').hide();"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+        
+        <p:dialog widgetVar="dlgSeEditar" closable="false" draggable="false" resizable="false" header="Editar Sessao" modal="true" appendTo="@(body)">
+            <h:form id="frmEditarSessao">
+                <h:panelGrid columns="2" id="pnlEditarSessao">
+                     <h:outputLabel value="ID: "/>
+                     <h:outputText value="#{MBsessao.sessao.id_sessao}"/>
+                    <p:outputLabel value="Filmes: "/>
+                    <p:inputText size="30" maxlength="50" value="#{MBsessao.sessao.filmes}"/>
+                    <p:outputLabel value="Preço: "/>
+                    <p:inputText size="15" maxlength="50" value="#{MBsessao.sessao.preco}"/>
+                    
+                </h:panelGrid>
+                <h:panelGrid columns="2">
+                    <p:commandButton value="Editar" 
+                                     actionListener="#{Msessao.editarSessao()}" 
+                                     oncomplete="PF('dlgSeEditar').hide();" 
+                                     update=":frmSessao:tbSessao
+                                     :msgGlobal"/>
+                    <p:commandButton value="Cancelar" onclick="PF('dlgSeEditar').hide();"/>
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
