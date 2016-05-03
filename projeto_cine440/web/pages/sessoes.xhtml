@@ -11,7 +11,7 @@
     </ui:define>
     <ui:define name="conteudo">
         <h:form id="frmSessao">
-            <p:dataTable var="item" value="#{MBsessao.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
+            <p:dataTable var="item" value="#{MBsessoes.itens}" emptyMessage="Nenhuma sessão cadastrada!" paginator="true" rows="5" id="tbSessao">
                 <f:facet name="header">
                     Sessão - Listagem
                 </f:facet>
@@ -28,19 +28,21 @@
                     <h:outputText value="#{item.horario}"/>
                 </p:column>
                 <p:column headerText="Opções">
-                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgSeExcluir').show();" update=":frmExcluiSessao:pnlExcluiSessao
+                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgSeExcluir').show();" 
+                                     update=":frmExcluiSessao:pnlExcluiSessao
                                      :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBsessao.sessao}" value="#{item}"/>
+                        <f:setPropertyActionListener target="#{MBsessoes.sessao}" value="#{item}"/>
                     </p:commandButton>
                     
-                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgSeEditar').show();" update=":frmEditarSessao:pnlEditarSessao
+                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgSeEditar').show();" 
+                                     update=":frmEditarSessao:pnlEditarSessao
                                      :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBsessao.sessao}" value="#{item}"/>
+                        <f:setPropertyActionListener target="#{MBsessoes.sessao}" value="#{item}"/>
                     </p:commandButton>
                     </p:column>
                 <f:facet name="footer">
                     <p:commandButton value="Novo" 
-                                     actionListener="#{MBsessao.prepararSessao()}" 
+                                     actionListener="#{MBsessoes.prepararSessao()}" 
                                      oncomplete="PF('dlgSeNovo').show();" 
                                      update=":frmCadastraSessao:pnlCadastraSessao
                                      :msgGlobal"/>
@@ -52,13 +54,15 @@
             <h:form id="frmCadastraSessao">
                 <h:panelGrid columns="2" id="pnlCadastraSessao">
                     <p:outputLabel value="Filme:"/>
-                    <p:inputText size="30" maxlength="50" value="#{MBsessao.sessao.filmes}"/>
+                    <p:inputText size="30" maxlength="50" value="#{MBsessoes.sessao.filmes}"/>
                     <p:outputLabel value="Preços:"/>
-                    <p:inputText size="15" maxlength="50" value="#{MBsessao.sessao.preco}"/>
+                    <p:inputText size="15" maxlength="50" value="#{MBsessoes.sessao.preco}"/>
+                    <p:outputLabel value="Horario:"/>
+                    <p:inputText size="15" maxlength="50" value="#{MBsessoes.sessao.horario}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Gravar" 
-                                     actionListener="#{MBsessao.novaSessao()}" 
+                                     actionListener="#{MBsessoes.novaSessao()}" 
                                      oncomplete="PF('dlgSeNovo').hide();" 
                                      update=":frmSessao:tbSessao
                                      :msgGlobal"/>
@@ -67,16 +71,16 @@
             </h:form>
         </p:dialog>
         <p:dialog widgetVar="dlgSeExcluir" closable="false" draggable="false" resizable="false" header="Excluir Produto" modal="true" appendTo="@(body)">
-            <h:form id="frmExcluiProduto">
-                <h:panelGrid columns="2" id="pnlExcluiSessao">
+            <h:form id="frmExcluirSessao">
+                <h:panelGrid columns="2" id="pnlExcluirSessao">
                     <h:outputLabel value="ID: "/>
-                    <h:outputText value="#{MBsessao.sessao.id_sessao}"/>
+                    <h:outputText value="#{MBsessoes.sessao.id_sessao}"/>
                     <h:outputLabel value="Filme: "/>
-                    <h:outputText value="#{MBsessao.sessao.filmes}"/>
+                    <h:outputText value="#{MBsessoes.sessao.filmes}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Excluir" 
-                                     actionListener="#{MBsessao.excluirSessao()}" 
+                                     actionListener="#{MBsessoes.excluirSessao()}" 
                                      oncomplete="PF('dlgSeExcluir').hide();" 
                                      update=":frmSessao:tbSessao
                                      :msgGlobal"/>
@@ -89,16 +93,16 @@
             <h:form id="frmEditarSessao">
                 <h:panelGrid columns="2" id="pnlEditarSessao">
                      <h:outputLabel value="ID: "/>
-                     <h:outputText value="#{MBsessao.sessao.id_sessao}"/>
+                     <h:outputText value="#{MBsessoes.sessao.id_sessao}"/>
                     <p:outputLabel value="Filmes: "/>
-                    <p:inputText size="30" maxlength="50" value="#{MBsessao.sessao.filmes}"/>
+                    <p:inputText size="30" maxlength="50" value="#{MBsessoes.sessao.filmes}"/>
                     <p:outputLabel value="Preço: "/>
-                    <p:inputText size="15" maxlength="50" value="#{MBsessao.sessao.preco}"/>
+                    <p:inputText size="15" maxlength="50" value="#{MBsessoes.sessao.preco}"/>
                     
                 </h:panelGrid>
                 <h:panelGrid columns="2">
                     <p:commandButton value="Editar" 
-                                     actionListener="#{MBsessao.editarSessao()}" 
+                                     actionListener="#{MBsessoes.editarSessao()}" 
                                      oncomplete="PF('dlgSeEditar').hide();" 
                                      update=":frmSessao:tbSessao
                                      :msgGlobal"/>

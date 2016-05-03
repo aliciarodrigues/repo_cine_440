@@ -11,7 +11,7 @@
     </ui:define>
     <ui:define name="conteudo">
         <h:form id="frmCadastro">
-            <p:dataTable emptyMessage="Nenhum Cadastro." value="#{MBCadastro.itens}"
+            <p:dataTable emptyMessage="Nenhum Cadastro." value="#{MBcadastro.itens}"
                          var="item" paginator="true" rows="5"
                          id="tbCadastro">
                 <f:facet name="header">
@@ -40,23 +40,23 @@
                                      oncomplete="PF('dlgCdExcluir').show();"
                                      update=":frmExcluirCadastro:pnlExcluirCadastro
                                      :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBCadastro.cadastro}" value="#{item}"/>
+                        <f:setPropertyActionListener target="#{MBcadastro.cadastro}" value="#{item}"/>
                         
                     </p:commandButton>
                     <p:commandButton icon="ui-icon-pencil"
                                      oncomplete="PF('dlgCdEditar').show();"
                                      update=":frmEditarCadastro:pnlEditarCadastro
                                      :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBCadastro.cadastro}" value="#{item}"/>
+                        <f:setPropertyActionListener target="#{MBcadastro.cadastro}" value="#{item}"/>
                         
                     </p:commandButton>
                 </p:column>
 
                 <f:facet name="footer">
                     <p:commandButton value="Novo" 
-                                     actionListener="#{MBCadastro.prepararCadastro()}"
+                                     actionListener="#{MBcadastro.prepararCadastro()}"
                                      oncomplete="PF('dlgCdNovo').show();"
-                                     update=":frmCadastro :pnlCadastro 
+                                     update=":frmCadastro :pnlCadastro
                                      :msgGlobal"/>
                 </f:facet>
             </p:dataTable>
@@ -65,27 +65,27 @@
                   draggable="false" resizable="false"
                   header="Novo Cadastro" modal="true" appendTo="@(body)">
             <h:form id="frmCadastro">
-                <h:panelGrid columns="2" id="pnlCadastro">
+                <h:panelGrid columns="5" id="pnlCadastro">
                     <p:outputLabel value="Nome"/>
                     <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.nome}"/>
+                                 value="#{MBcadastro.cadastro.nome}"/>
                     <p:outputLabel value="E-mail"/>
                     <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.email}"/>
+                                 value="#{MBcadastro.cadastro.email}"/>
                     <p:outputLabel value="Senha"/>
                     <h:inputSecret size="30" maxlength="50"
-                                   value="#{MBCadastro.cadastro.senha}"/>
+                                   value="#{MBcadastro.cadastro.senha}"/>
                     <p:outputLabel value="Endereço"/>
                     <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.endereco}"/>
+                                 value="#{MBcadastro.cadastro.endereco}"/>
                     <p:outputLabel value="CPF"/>
                     <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.cpf}"/>
+                                 value="#{MBcadastro.cadastro.cpf}"/>
                 </h:panelGrid>
 
                 <h:panelGrid columns="2">
                     <p:commandButton value="Gravar"
-                                     actionListener="#{MBCadastro.novoCadastro()}"
+                                     actionListener="#{MBcadastro.novoCadastro()}"
                                      oncomplete="PF('dlgCdNovo').hide();"
                                      update=":frmCadastro :tbCadastro
                                      :msgGlobal"/>
@@ -100,24 +100,24 @@
                   draggable="false" resizable="false"
                   header="Excluir Cadastro" modal="true" appendTo="@(body)">
             <h:form id="frmExcluirCadastro">
-                <h:panelGrid columns="2" id="pnlExcluirCadastro">
+                <h:panelGrid columns="5" id="pnlExcluirCadastro">
                     <h:outputLabel value="Codigo: "/>
-                    <h:outputText value="#{MBCadastro.cadastro.id}"/>
+                    <h:outputText value="#{MBcadastro.cadastro.id}"/>
                         <h:outputLabel value="Nome: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.nome}"/>
+                        <h:outputText value="#{MBcadastro.cadastro.nome}"/>
                         <h:outputLabel value="E-mail: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.email}"/>
+                        <h:outputText value="#{MBcadastro.cadastro.email}"/>
                         <h:outputLabel value="Senha: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.senha}"/>
+                        <h:outputText value="#{MBcadastro.cadastro.senha}"/>
                         <h:outputLabel value="Endereço: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.endereco}"/>
+                        <h:outputText value="#{MBcadastro.cadastro.endereco}"/>
                         <h:outputLabel value="CPF: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.cpf}"/>
+                        <h:outputText value="#{MBcadastro.cadastro.cpf}"/>
                 </h:panelGrid>
 
                 <h:panelGrid columns="2">
                     <p:commandButton value="Excluir" 
-                                     actionListener="#{MBCadastro.excluirCadastro()}"
+                                     actionListener="#{MBcadastro.excluirCadastro()}"
                                      oncomplete="PF('dlgCdExcluir').hide();"
                                      update=":frmCadastro :tbCadastro
                                      :msgGlobal"/>
@@ -130,20 +130,20 @@
                   draggable="false" resizable="false"
                   header="Editar Cadastro" modal="true" appendTo="@(body)">
             <h:form id="frmEditarCadastro">
-                <h:panelGrid columns="2" id="pnlEditarCadastro">
+                <h:panelGrid columns="5" id="pnlEditarCadastro">
                     <h:outputLabel value="Codigo: "/>
-                    <h:outputText value="#{MBCadastro.cadastro.id}"/>
+                    <h:outputText value="#{MBcadastro.cadastro.id}"/>
                     <h:outputLabel value="E-mail"/>
                     <h:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.email}"/>
+                                 value="#{MBcadastro.cadastro.email}"/>
                     <h:outputLabel value="Senha"/>
                     <h:inputSecret size="30" maxlength="50"
-                                   value="#{MBCadastro.cadastro.senha}"/>
+                                   value="#{MBcadastro.cadastro.senha}"/>
                 </h:panelGrid>
 
                 <h:panelGrid columns="2">
                     <p:commandButton value="Editar"
-                                     actionListener="#{MBCadastro.editarCadastro()}"
+                                     actionListener="#{MBcadastro.editarCadastro()}"
                                      oncomplete="PF('dlgCdEditar').hide();"
                                      update=":frmcadastro:tbCadastro
                                      :msgGlobal"/>

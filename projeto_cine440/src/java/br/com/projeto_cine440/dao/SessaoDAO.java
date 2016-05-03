@@ -12,7 +12,7 @@ public class SessaoDAO {
     
     public void salvar(Sessoes s)
             throws ClassNotFoundException, SQLException {
-        String sql = "INSERT INTO sessao (filme, preco, horario) VALUES(?,?,?)";
+        String sql = "INSERT INTO sessoes (filmes, precos, horario,id_sessao) VALUES (?,?,?,?)";
 
         Connection connection = ConnectionFactory.getConnection();
 
@@ -20,13 +20,14 @@ public class SessaoDAO {
         stmt.setString(1, s.getFilmes());
         stmt.setDouble(2, s.getPreco());
         stmt.setTime(3, s.getHorario());
+        stmt.setInt(3, s.getId_sessao());
         stmt.execute();
         stmt.close();
     }
 
     public void excluir(Sessoes s)
             throws ClassNotFoundException, SQLException {
-        String sql = "DELETE FROM sessao WHERE id_produto = ? ";
+        String sql = "DELETE FROM sessoes WHERE id_sessao = ? ";
 
         Connection connection = ConnectionFactory.getConnection();
 
@@ -52,7 +53,7 @@ public class SessaoDAO {
 
     public Sessoes pesquisar(Sessoes s)
             throws ClassNotFoundException, SQLException {
-        String sql = "SELECT * FROM sessao WHERE id_sessao = ? ";
+        String sql = "SELECT * FROM sessoes WHERE id_sessao = ? ";
 
         Connection connection = ConnectionFactory.getConnection();
 

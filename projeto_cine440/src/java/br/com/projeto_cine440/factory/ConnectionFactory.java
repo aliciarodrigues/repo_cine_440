@@ -1,4 +1,3 @@
-
 package br.com.projeto_cine440.factory;
 
 import java.sql.Connection;
@@ -8,9 +7,9 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException{
-    String url ="jdbc:mysql://localhost/projeto_cine440";
+    String url ="jdbc:mysql://localhost/cine_440";
         String uid = "root";
-        String pass = "0890";
+        String pass = "Senac/321";
         String driver = "com.mysql.jdbc.Driver";
         
         try {

@@ -9,10 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ManagedBean(name = "MBsessao")
+@ManagedBean(name = "MBsessoes")
 @ViewScoped
-public class SessaoBean {
-    
+public class SessoesBean {
+
     private Sessoes sessao;
     private ArrayList<Sessoes> itens;
 
@@ -23,8 +23,6 @@ public class SessaoBean {
     public void setSessao(Sessoes sessao) {
         this.sessao = sessao;
     }
-
-    
 
     public ArrayList<Sessoes> getItens() {
         return itens;

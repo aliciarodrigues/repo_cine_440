@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class CadastroDAO {
     public void salvar(Cadastro f) throws ClassNotFoundException, SQLException {
-        String sql = "INSERT INTO cadastro (nome,email,senha,endereco,cpf) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO cadastro (nome,email,senha,endereco,cpf,id) VALUES(?,?,?,?,?,?)";
         Connection connection = ConnectionFactory.getConnection();
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -19,7 +19,9 @@ public class CadastroDAO {
             stmt.setString(3, f.getSenha());
             stmt.setString(4,f.getEndereco());
             stmt.setString(5, f.getCpf());
+            stmt.setInt(6, f.getId());
             stmt.execute();
+            stmt.close();
         }
     }
 
