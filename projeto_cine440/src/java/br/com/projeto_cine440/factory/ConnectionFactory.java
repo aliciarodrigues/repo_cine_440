@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 public class ConnectionFactory {
     public static Connection getConnection() throws ClassNotFoundException{
     String url ="jdbc:mysql://localhost/cine_440";
@@ -17,7 +16,8 @@ public class ConnectionFactory {
             return DriverManager.getConnection(url, uid, pass);
         }catch(SQLException e){
             System.out.println("Falha na conexão ao DB");
-        }
+    }          
         return null;
-    }  
+    }
+    
 }

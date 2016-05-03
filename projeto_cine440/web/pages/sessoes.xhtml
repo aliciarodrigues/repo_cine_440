@@ -28,14 +28,12 @@
                     <h:outputText value="#{item.horario}"/>
                 </p:column>
                 <p:column headerText="Opções">
-                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgSeExcluir').show();" 
-                                     update=":frmExcluiSessao:pnlExcluiSessao
+                    <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgSeExcluir').show();" update=":frmExcluiSessao:pnlExcluiSessao
                                      :msgGlobal">
                         <f:setPropertyActionListener target="#{MBsessoes.sessao}" value="#{item}"/>
                     </p:commandButton>
                     
-                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgSeEditar').show();" 
-                                     update=":frmEditarSessao:pnlEditarSessao
+                    <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgSeEditar').show();" update=":frmEditarSessao:pnlEditarSessao
                                      :msgGlobal">
                         <f:setPropertyActionListener target="#{MBsessoes.sessao}" value="#{item}"/>
                     </p:commandButton>
@@ -53,11 +51,11 @@
         <p:dialog widgetVar="dlgSeNovo" closable="false" draggable="false" resizable="false" header="Novo Produto" modal="true" appendTo="@(body)">
             <h:form id="frmCadastraSessao">
                 <h:panelGrid columns="2" id="pnlCadastraSessao">
-                    <p:outputLabel value="Filme:"/>
+                    <p:outputLabel value="Filmes:"/>
                     <p:inputText size="30" maxlength="50" value="#{MBsessoes.sessao.filmes}"/>
                     <p:outputLabel value="Preços:"/>
                     <p:inputText size="15" maxlength="50" value="#{MBsessoes.sessao.preco}"/>
-                    <p:outputLabel value="Horario:"/>
+                    <p:outputLabel value="Horários:"/>
                     <p:inputText size="15" maxlength="50" value="#{MBsessoes.sessao.horario}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="2">
@@ -71,11 +69,11 @@
             </h:form>
         </p:dialog>
         <p:dialog widgetVar="dlgSeExcluir" closable="false" draggable="false" resizable="false" header="Excluir Produto" modal="true" appendTo="@(body)">
-            <h:form id="frmExcluirSessao">
-                <h:panelGrid columns="2" id="pnlExcluirSessao">
+            <h:form id="frmExcluiProduto">
+                <h:panelGrid columns="2" id="pnlExcluiSessao">
                     <h:outputLabel value="ID: "/>
                     <h:outputText value="#{MBsessoes.sessao.id_sessao}"/>
-                    <h:outputLabel value="Filme: "/>
+                    <h:outputLabel value="Filmes: "/>
                     <h:outputText value="#{MBsessoes.sessao.filmes}"/>
                 </h:panelGrid>
                 <h:panelGrid columns="2">

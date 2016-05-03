@@ -1,4 +1,3 @@
-
 package br.com.projeto_cine440.factory;
 
 import java.sql.Connection;

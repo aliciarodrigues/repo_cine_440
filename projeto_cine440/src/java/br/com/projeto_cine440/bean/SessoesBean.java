@@ -12,7 +12,7 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean(name = "MBsessoes")
 @ViewScoped
 public class SessoesBean {
-
+    
     private Sessoes sessao;
     private ArrayList<Sessoes> itens;
 

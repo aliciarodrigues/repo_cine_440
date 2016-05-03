@@ -39,7 +39,7 @@ public class SessaoDAO {
 
     public void editar(Sessoes s)
             throws ClassNotFoundException, SQLException {
-        String sql = "UPDATE sessoes SET filmes = ?, preco = ?, horario = ?";
+        String sql = "UPDATE sessao SET filmes = ?, preco = ?, horario = ?";
 
         Connection connection = ConnectionFactory.getConnection();
 
@@ -93,7 +93,7 @@ public class SessaoDAO {
     }
 
     public ArrayList<Sessoes> listar() throws SQLException, ClassNotFoundException {
-        String sql = "select id_sessao, filmes, preco, horario";
+        String sql = "select from sessao id_sessao, filmes, preco, horario";
 
         Connection connection = ConnectionFactory.getConnection();
 
