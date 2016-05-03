@@ -9,8 +9,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-@ManagedBean(name = "MBsessao")
 @ViewScoped
+@ManagedBean(name = "MBsessoes")
 public class SessaoBean {
     
     private Sessoes sessao;

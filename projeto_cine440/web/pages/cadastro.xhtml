@@ -1,155 +1,39 @@
 <!DOCTYPE html>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 template="/templates/modelo_template.xhtml">
+
     <ui:define name="menu">
         <ui:include src="/includes/menu_princi.xhtml"/>
-
-    </ui:define>
-    <ui:define name="conteudo">
         <h:form id="frmCadastro">
-            <p:dataTable emptyMessage="Nenhum Cadastro." value="#{MBCadastro.itens}"
-                         var="item" paginator="true" rows="5"
-                         id="tbCadastro">
-                <f:facet name="header">
-                    Cadastro - Listagem
-                </f:facet>
-                <p:column headerText="Codigo" sortBy="#{item.id}" filterBy="#{item.id}">
-                    <h:outputText value="#{item.id}"/>
-                </p:column>
-                <p:column headerText="Nome" sortBy="#{item.nome}" filterBy="#{item.nome}">
-                    <h:outputText value="#{item.nome}"/>
-                </p:column>
-                <p:column headerText="E-mail" sortBy="#{item.email}" filterBy="#{item.email}">
-                    <h:outputText value="#{item.email}"/>
-                </p:column>
-                <p:column headerText="Senha" sortBy="#{item.senha}" filterBy="#{item.senha}">
-                    <h:outputText value="#{item.senha}"/>
-                </p:column>
-                <p:column headerText="Endereço " sortBy="#{item.endereco}" filterBy="#{item.endereco}">
-                    <h:outputText value="#{item.endereco}"/>
-                </p:column>
-                <p:column headerText="CPF " sortBy="#{item.cpf}" filterBy="#{item.cpf}">
-                    <h:outputText value="#{item.cpf}"/>
-                </p:column>
-                <p:column headerText="Opções">
-                    <p:commandButton icon="ui-icon-trash"
-                                     oncomplete="PF('dlgCdExcluir').show();"
-                                     update=":frmExcluirCadastro:pnlExcluirCadastro
-                                     :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBCadastro.cadastro}" value="#{item}"/>
-                        
-                    </p:commandButton>
-                    <p:commandButton icon="ui-icon-pencil"
-                                     oncomplete="PF('dlgCdEditar').show();"
-                                     update=":frmEditarCadastro:pnlEditarCadastro
-                                     :msgGlobal">
-                        <f:setPropertyActionListener target="#{MBCadastro.cadastro}" value="#{item}"/>
-                        
-                    </p:commandButton>
-                </p:column>
-
+    </ui:define>
+    <ui:define name="conteudo"> 
+        <f:facet name="header">
+            Cadastro Administradores
+        </f:facet>
+        <h:form id="usuario">
+            <h:panelGrid columns="1">
+                <h:outputLabel value="Identificação do Usuário: "/>
+                <h:outputLabel for="cNome" value="Nome: "/><h:inputText size="20" maxlength="50" required="required"/>
+                <h:outputLabel for="cSenha" value="Senha: "/><h:inputSecret size="8" maxlength="8" />
+                <h:outputLabel for="cMail" value="E-mail: "/><h:inputText size="20" maxlength="50"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
                 <f:facet name="footer">
-                    <p:commandButton value="Novo" 
-                                     actionListener="#{MBCadastro.prepararCadastro()}"
-                                     oncomplete="PF('dlgCdNovo').show();"
-                                     update=":frmCadastro :pnlCadastro 
-                                     :msgGlobal"/>
-                </f:facet>
-            </p:dataTable>
-        </h:form>
-        <p:dialog widgetVar="dlgCdNovo" closable="false"
-                  draggable="false" resizable="false"
-                  header="Novo Cadastro" modal="true" appendTo="@(body)">
-            <h:form id="frmCadastro">
-                <h:panelGrid columns="2" id="pnlCadastro">
-                    <p:outputLabel value="Nome"/>
-                    <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.nome}"/>
-                    <p:outputLabel value="E-mail"/>
-                    <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.email}"/>
-                    <p:outputLabel value="Senha"/>
-                    <h:inputSecret size="30" maxlength="50"
-                                   value="#{MBCadastro.cadastro.senha}"/>
-                    <p:outputLabel value="Endereço"/>
-                    <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.endereco}"/>
-                    <p:outputLabel value="CPF"/>
-                    <p:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.cpf}"/>
-                </h:panelGrid>
-
-                <h:panelGrid columns="2">
-                    <p:commandButton value="Gravar"
-                                     actionListener="#{MBCadastro.novoCadastro()}"
-                                     oncomplete="PF('dlgCdNovo').hide();"
-                                     update=":frmCadastro :tbCadastro
+                    <p:commandButton value="Gravar" 
+                                     actionListener="#{MBcadastro.novoCadastro()}" 
+                                     oncomplete="PF('dlgCdNovo').hide();" 
+                                     update=":frmCadastro :pnlCadastro
                                      :msgGlobal"/>
                     <p:commandButton value="Cancelar" onclick="PF('dlgCdNovo').hide();"/>
-                </h:panelGrid>
-
-            </h:form>
-        </p:dialog>
-
-
-        <p:dialog widgetVar="dlgCdExcluir" closable="false"
-                  draggable="false" resizable="false"
-                  header="Excluir Cadastro" modal="true" appendTo="@(body)">
-            <h:form id="frmExcluirCadastro">
-                <h:panelGrid columns="2" id="pnlExcluirCadastro">
-                    <h:outputLabel value="Codigo: "/>
-                    <h:outputText value="#{MBCadastro.cadastro.id}"/>
-                        <h:outputLabel value="Nome: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.nome}"/>
-                        <h:outputLabel value="E-mail: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.email}"/>
-                        <h:outputLabel value="Senha: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.senha}"/>
-                        <h:outputLabel value="Endereço: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.endereco}"/>
-                        <h:outputLabel value="CPF: "/>
-                        <h:outputText value="#{MBCadastro.cadastro.cpf}"/>
-                </h:panelGrid>
-
-                <h:panelGrid columns="2">
-                    <p:commandButton value="Excluir" 
-                                     actionListener="#{MBCadastro.excluirCadastro()}"
-                                     oncomplete="PF('dlgCdExcluir').hide();"
-                                     update=":frmCadastro :tbCadastro
-                                     :msgGlobal"/>
-                    <p:commandButton value="Cancelar" onclick="PF('dlgCdExcluir').hide();"/>
-                </h:panelGrid>
-            </h:form>
-        </p:dialog>
-
-        <p:dialog widgetVar="dlgCdEditar" closable="false"
-                  draggable="false" resizable="false"
-                  header="Editar Cadastro" modal="true" appendTo="@(body)">
-            <h:form id="frmEditarCadastro">
-                <h:panelGrid columns="2" id="pnlEditarCadastro">
-                    <h:outputLabel value="Codigo: "/>
-                    <h:outputText value="#{MBCadastro.cadastro.id}"/>
-                    <h:outputLabel value="E-mail"/>
-                    <h:inputText size="30" maxlength="50"
-                                 value="#{MBCadastro.cadastro.email}"/>
-                    <h:outputLabel value="Senha"/>
-                    <h:inputSecret size="30" maxlength="50"
-                                   value="#{MBCadastro.cadastro.senha}"/>
-                </h:panelGrid>
-
-                <h:panelGrid columns="2">
-                    <p:commandButton value="Editar"
-                                     actionListener="#{MBCadastro.editarCadastro()}"
-                                     oncomplete="PF('dlgCdEditar').hide();"
-                                     update=":frmcadastro:tbCadastro
-                                     :msgGlobal"/>
-                    <p:commandButton value="Cancelar" onclick="PF('dlgCdEditar').hide();"/>
-                </h:panelGrid>
-            </h:form>
-        </p:dialog>
+                </f:facet>
+            </h:panelGrid>
+            <a href="www.facebook.com">Facebook</a> | 
+            <a href="www.twitter.com">Twitter</a>
+        </h:form>
+    </h:form>
     </ui:define>
 </ui:composition>

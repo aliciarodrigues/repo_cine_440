@@ -92,7 +92,7 @@ public class SessaoDAO {
     }
 
     public ArrayList<Sessoes> listar() throws SQLException, ClassNotFoundException {
-        String sql = "select id_sessao, filmes, preco, horario";
+        String sql = "select * from id_sessao, filmes, preco, horario";
 
         Connection connection = ConnectionFactory.getConnection();
 
